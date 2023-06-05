@@ -7,8 +7,8 @@ from load_wise.reward_cal import get_reward
 
 class MongoDBIndexSelectionEnv(gym.Env):
     def __init__(self, initial_state_fn, reward_fn, state_change_fn):
-        self.action_space = spaces.MultiBinary(3)  # Binary array of size 5
-        self.observation_space = spaces.MultiBinary(53)  # Binary array of size 55
+        self.action_space = spaces.Discrete(3) #MultiBinary(3)  # Binary array of size 5
+        self.observation_space = spaces.MultiBinary(51)  # Binary array of size 55
         
         self.initial_state_fn = initial_state_fn
         self.reward_fn = reward_fn
