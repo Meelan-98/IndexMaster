@@ -24,7 +24,7 @@ for _ in range(num_documents):
         'job_title': fake.job(),
         'company': fake.company(),
     }
-    print("collection inserted")
+    print(_,": collection inserted")
     collection.insert_one(document)
 
 # Close the MongoDB connection

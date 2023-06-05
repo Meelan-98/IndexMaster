@@ -1,78 +1,140 @@
-import random
-import numpy as np
+import torch
+import torch.nn as nn
+import torch.optim as optim
 import json
 
-# Define the Deep Q-Network (DQN) class
-class DQN:
-    def __init__(self, state_size, action_size):
-        self.state_size = state_size
-        self.action_size = action_size
-        self.q_table = np.zeros((state_size, action_size))
-        self.learning_rate = 0.1
-        self.discount_factor = 0.9
-        self.epsilon = 1.0
-        self.epsilon_decay = 0.99
-        self.epsilon_min = 0.01
-    
-    def select_action(self, state):
-        if np.random.rand() <= self.epsilon:
-            return random.randrange(self.action_size)
-        else:
-            return np.argmax(self.q_table[state])
-    
+class DQN(nn.Module):
+    def __init__(self, state_dim, action_dim, hidden_dim=64):
+        super(DQN, self).__init__()
+        self.state_dim = state_dim
+        self.action_dim = action_dim
+
+        # Embedding layer for the state/query
+        self.embedding_layer = nn.EmbeddingBag(state_dim, hidden_dim, sparse=True)
+        self.fc = nn.Linear(hidden_dim, action_dim)
+
+    def forward(self, state):
+        embedded_state = self.embedding_layer(state)
+        output = self.fc(embedded_state)
+        return output
+
+
+class Agent:
+    def __init__(self, state_dim, action_dim, learning_rate, discount_factor):
+        self.state_dim = state_dim
+        self.action_dim = action_dim
+        self.learning_rate = learning_rate
+        self.discount_factor = discount_factor
+
+        self.model = DQN(state_dim, action_dim)
+        self.optimizer = optim.Adagrad(self.model.parameters(), lr=learning_rate)
+        self.criterion = nn.MSELoss()
+        self.action_to_index = {"name_1":"0","address_text":"1","job_title_1_company_1":"2"}  # Dictionary to map action string to index
+        self.index_to_action = {"0":"name_1","1":"address_text","2":"job_title_1_company_1"}  # Dictionary to map index to action string
+
+    def preprocess_state(self, state):
+        state_tensor = torch.LongTensor([hash(str(value)) % self.state_dim for value in state])
+        #state_tensor = torch.LongTensor([hash(str(value)) % self.state_dim for value in state])
+
+        return state_tensor.unsqueeze(0)
+
     def update_q_table(self, state, action, reward, next_state):
-        q_value = self.q_table[state, action]
-        max_q_value = np.max(self.q_table[next_state])
-        new_q_value = q_value + self.learning_rate * (reward + self.discount_factor * max_q_value - q_value)
-        self.q_table[state, action] = new_q_value
-    
-    def decay_epsilon(self):
-        if self.epsilon > self.epsilon_min:
-            self.epsilon *= self.epsilon_decay
+        state_tensor = self.preprocess_state(state)
+        next_state_tensor = self.preprocess_state(next_state)
 
-# Load the training dataset from a JSON file
-def load_training_dataset(filename):
-    with open(filename, 'r') as json_file:
-        training_dataset = json.load(json_file)
-    return training_dataset
+        q_values = self.model(state_tensor)
+        action_index = self.action_to_index[action]  # Convert action string to index
+        q_value = q_values[0][action_index]
 
-# Train the DQN model on the training dataset
-def train_dqn_model(training_dataset, state_size, action_size, num_episodes):
-    dqn = DQN(state_size, action_size)
-    
-    for episode in range(num_episodes):
-        total_reward = 0
-        for k in range(len(training_dataset)):
-            sample = training_dataset[k]
-            state = sample['state']
-            action = sample['action']
-            reward = sample['reward']
-            next_state = training_dataset[k+1]['state']  # Update with your own logic for getting the next state
-            
-            dqn.update_q_table(state, action, reward, next_state)
-            total_reward += reward
-        
-        dqn.decay_epsilon()
-        
-        # Print the total reward for the episode
-        print("Episode: {}, Total Reward: {}".format(episode + 1, total_reward))
-    
-    return dqn
+        next_q_values = self.model(next_state_tensor)
+        max_q_value, _ = torch.max(next_q_values, dim=1)
 
-# Test the trained DQN model on a new query
-def test_dqn_model(dqn, state):
-    action = dqn.select_action(state)
-    return action
+        target_q_value = reward + self.discount_factor * max_q_value
+
+        loss = self.criterion(q_value.unsqueeze(0), target_q_value)  # Ensure the same shape
+
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+
+    def select_action(self, state,action):
+        state_tensor = self.preprocess_state(state)
+        q_values = self.model(state_tensor)
+        _, action_index = torch.max(q_values, dim=1)
+        #print(action_index.item())
+        #print(self.index_to_action)
+        action = self.index_to_action[str(action_index.item())]  # Convert index to action string
+        return action
+
+
+# Load rewards from JSON file
+def load_rewards_from_file(filename):
+    with open(filename, 'r') as file:
+        rewards = json.load(file)
+    return rewards
+
+def load_queries_from_file(filename):
+    with open(filename, 'r') as file:
+        queries = json.load(file)
+    return queries
 
 # Example usage
-training_dataset = load_training_dataset('training_dataset.json')
-state_size = len(training_dataset[0]['state'])
-action_size = 3  # Assuming three indexes: name_index, job_title_index, and address_index
-num_episodes = 100
+state_dim = 4  # Dimension of the state/query
+action_dim = 3  # Number of possible actions
+learning_rate = 0.001
+discount_factor = 0.9
 
-dqn_model = train_dqn_model(training_dataset, state_size, action_size, num_episodes)
+# Initialize the agent
+agent = Agent(state_dim, action_dim, learning_rate, discount_factor)
 
-# # Test the trained model on a new query state
-# new_query_state = [1, 2, 3, 4, 5]  # Update with your own logic for the new query state
-# optimal_index = test_dqn_model(dqn_model, new_query_state)
-# print("Optimal Index: {}".format(optimal_index))
+# Load rewards from file
+rewards = load_rewards_from_file('training_dataset.json')
+queries_set = load_queries_from_file('queries.json')
+for i, reward in enumerate(rewards):
+    action = reward['action']
+    if action not in agent.action_to_index:
+        index = len(agent.action_to_index)
+        agent.action_to_index[action] = index
+        agent.index_to_action[index] = action
+
+torch.manual_seed(42)
+
+    # Load the trained model
+model = DQN(state_dim, action_dim)
+model.load_state_dict(torch.load('trained_model.pth'))
+
+    # Set model in evaluation mode
+model.eval()
+
+    # Create the agent for prediction
+agent.model = model
+
+
+# Train the agent using the rewards
+for i in range(len(rewards)):
+
+    state = rewards[i]['state']
+    action = rewards[i]['action']
+    reward_value = rewards[i]['reward']
+    try :
+        index_state = queries_set.index(state)
+        next_state = queries_set[index_state+1]
+    except IndexError:
+        pass
+    torch.save(agent.model.state_dict(), 'trained_model.pth')
+# Get user input for query/state
+
+
+# Select the best action based on the query/state
+
+# j = input("Enter Query number : ")
+# query = queries_set[int(j)]
+# next_state = queries_set[int(j)+1]
+# action = input("Enter the action you prefer: ")
+# query_list = [str(value) for value in query.values()]
+# query_list = [hash(value) % state_dim for value in query_list]
+# best_action = agent.select_action(query_list)
+# if action == best_action :
+#     print("Yes, That is the best action for the Query")
+# else:
+#     print("No, The best action for the query is", best_action)
