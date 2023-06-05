@@ -7,22 +7,17 @@ from load_wise.reward_cal import get_reward
 
 class MongoDBIndexSelectionEnv(gym.Env):
     def __init__(self, initial_state_fn, reward_fn, state_change_fn):
-        # Define the action and observation spaces
         self.action_space = spaces.MultiBinary(5)  # Binary array of size 5
         self.observation_space = spaces.MultiBinary(55)  # Binary array of size 55
         
-        # Store the provided functions
         self.initial_state_fn = initial_state_fn
         self.reward_fn = reward_fn
         self.state_change_fn = state_change_fn
         
-        # Initialize the state
         self.state = None
-        
         self.reset()
         
     def reset(self):
-        # Reset the environment and return the initial observation
         self.state = self.initial_state_fn('tData.json')
         return np.array(self.state)
     
