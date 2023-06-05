@@ -1,7 +1,6 @@
 import gym
 from stable_baselines3 import PPO
 
-# Define the custom environment
 class CustomEnvironment(gym.Env):
     def __init__(self):
         # Define your custom environment implementation
