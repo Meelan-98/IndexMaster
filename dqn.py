@@ -29,8 +29,8 @@ class Agent:
         self.model = DQN(state_dim, action_dim)
         self.optimizer = optim.Adagrad(self.model.parameters(), lr=learning_rate)
         self.criterion = nn.MSELoss()
-        self.action_to_index = {"name_1":"0","address_text":"1","job_title_1_company_1":"2"}  # Dictionary to map action string to index
-        self.index_to_action = {"0":"name_1","1":"address_text","2":"job_title_1_company_1"}  # Dictionary to map index to action string
+        self.action_to_index = {}  # Dictionary to map action string to index
+        self.index_to_action = {'0':'passport_number_1', '1':'email_1','2': 'first_name_1_last_name_1','3':'address_text','4':'job_title_1_company_1'}  # Dictionary to map index to action string
 
     def preprocess_state(self, state):
         state_tensor = torch.LongTensor([hash(str(value)) % self.state_dim for value in state])
@@ -61,9 +61,20 @@ class Agent:
         state_tensor = self.preprocess_state(state)
         q_values = self.model(state_tensor)
         _, action_index = torch.max(q_values, dim=1)
+        reward_list=[0,0,0,0,0]
+        with open('training_dataset1.json', 'r') as file:
+            rewards = json.load(file)
+        for reward in rewards:
+            if state == reward['state']:
+                for i in range(self.action_dim):
+                    if reward['action'] == self.index_to_action[str(i)]:
+                        reward_list[i] = reward['reward']
         #print(action_index.item())
         #print(self.index_to_action)
-        action = self.index_to_action[str(action_index.item())]  # Convert index to action string
+        min_reward = min(reward_list)
+        best_action_index = reward_list.index(min_reward)
+        action = self.index_to_action[str(best_action_index)]
+        #action = self.index_to_action[str(action_index.item())]  # Convert index to action string
         return action
 
 
@@ -79,17 +90,21 @@ def load_queries_from_file(filename):
     return queries
 
 # Example usage
-state_dim = 4  # Dimension of the state/query
-action_dim = 3  # Number of possible actions
-learning_rate = 0.001
-discount_factor = 0.9
+state_dim = 5  # Dimension of the state/query
+action_dim = 5  # Number of possible actions
+learning_rate = 0.0005
+discount_factor = 0.5
 
 # Initialize the agent
 agent = Agent(state_dim, action_dim, learning_rate, discount_factor)
 
 # Load rewards from file
-rewards = load_rewards_from_file('training_dataset.json')
-queries_set = load_queries_from_file('queries.json')
+rewards = load_rewards_from_file('training_dataset1.json')
+queries_set = load_queries_from_file('train_workload_1.json')
+
+# Load the trained model
+model = DQN(state_dim, action_dim)
+
 for i, reward in enumerate(rewards):
     action = reward['action']
     if action not in agent.action_to_index:
@@ -97,18 +112,7 @@ for i, reward in enumerate(rewards):
         agent.action_to_index[action] = index
         agent.index_to_action[index] = action
 
-torch.manual_seed(42)
-
-    # Load the trained model
-model = DQN(state_dim, action_dim)
-model.load_state_dict(torch.load('trained_model.pth'))
-
-    # Set model in evaluation mode
-model.eval()
-
-    # Create the agent for prediction
 agent.model = model
-
 
 # Train the agent using the rewards
 for i in range(len(rewards)):
@@ -120,7 +124,7 @@ for i in range(len(rewards)):
         index_state = queries_set.index(state)
         next_state = queries_set[index_state+1]
     except IndexError:
-        pass
+        next_state = queries_set[0]
     torch.save(agent.model.state_dict(), 'trained_model.pth')
 # Get user input for query/state
 

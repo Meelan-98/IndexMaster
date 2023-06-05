@@ -3,8 +3,8 @@ from dqn import DQN, Agent
 import json 
 
 if __name__ == "__main__":
-    state_dim = 4  # Dimension of the state/query
-    action_dim = 3  # Number of possible actions
+    state_dim = 5  # Dimension of the state/query
+    action_dim = 5  # Number of possible actions
 
     # Load the saved model architecture
     model = DQN(state_dim, action_dim)
@@ -12,8 +12,8 @@ if __name__ == "__main__":
     # Load the model's state dictionary
     model.load_state_dict(torch.load('trained_model.pth'))
 
-    state_dim = 4  # Dimension of the state/query
-    action_dim = 3  # Number of possible actions
+    state_dim = 5  # Dimension of the state/query
+    action_dim = 5  # Number of possible actions
     learning_rate = 0.001
     discount_factor = 0.9
 
