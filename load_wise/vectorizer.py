@@ -50,13 +50,13 @@ def export_load_vector(file_path):
     fields = ['first_name','last_name','title','address','phone_number','job_title','company','email','passport_number','suffix']
     vector_representation = load_and_iterate_json(file_path,fields)
 
-    vector_representation.append([1,0,1,0,1])
+    vector_representation.append([1,0,1])
 
     return(flatten_2d_list(vector_representation))
 
 
 def state_change(current_state,index_choices):
-    current_state[-5:] = index_choices[:5]
+    current_state[-3:] = index_choices[:3]
     return(current_state)
 
 # print(export_load_vector('tData.json'))

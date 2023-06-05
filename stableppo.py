@@ -7,8 +7,8 @@ from load_wise.reward_cal import get_reward
 
 class MongoDBIndexSelectionEnv(gym.Env):
     def __init__(self, initial_state_fn, reward_fn, state_change_fn):
-        self.action_space = spaces.MultiBinary(5)  # Binary array of size 5
-        self.observation_space = spaces.MultiBinary(55)  # Binary array of size 55
+        self.action_space = spaces.MultiBinary(3)  # Binary array of size 5
+        self.observation_space = spaces.MultiBinary(53)  # Binary array of size 55
         
         self.initial_state_fn = initial_state_fn
         self.reward_fn = reward_fn
@@ -23,16 +23,9 @@ class MongoDBIndexSelectionEnv(gym.Env):
     
     def step(self, action):
 
-        chosen_indexes = np.where(action == 1)[0]  # Get the selected indexes
-        
-        binary_action = [int(bit) for bit in chosen_indexes]
-        ones_count = sum(binary_action)
-        
-        if ones_count != 3:
-            reward = -1
-        else:
-            reward = self.reward_fn(chosen_indexes)  # Calculate the reward
-        self.state = self.state_change_fn(self.state,chosen_indexes)  # Change the state
+        reward = self.reward_fn(action)
+        self.state = self.state_change_fn(self.state,action)  # Change the state
+
         done = True  # Set to True if the episode is over
         
         return np.array(self.state), reward, done, {}
