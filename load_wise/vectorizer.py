@@ -1,5 +1,10 @@
 import json
 
+def multiply_list_by_value(lst, value):
+    multiplied_list = [item * value for item in lst]
+    return multiplied_list
+
+
 def create_binary_vector(larger_list, smaller_list):
     binary_vector = []
     smaller_set = set(smaller_list)
@@ -19,6 +24,8 @@ def load_and_iterate_json(file_path,attributes):
     vectorz = []
     count =[]
 
+    final_vector = []
+
     for query in data:
         vector = create_binary_vector(attributes,list(query.keys()))
         if vector not in vectorz:
@@ -27,13 +34,29 @@ def load_and_iterate_json(file_path,attributes):
         else:
             index = vectorz.index(vector)
             count[index] = count[index] + 1
+
+    for v in range(len(vectorz)):
+        final_vector.append(multiply_list_by_value(vectorz[v], count[v]))
     
-    print(count)
-    return(vectorz)
+    return(final_vector)
+
+def flatten_2d_list(nested_list):
+    flattened_list = [item for sublist in nested_list for item in sublist]
+    return flattened_list
 
 
-fields = ['first_name','last_name','title','address','phone_number','job_title','company','email','passport_number','suffix']
-file_path = 'tData.json'
-vector_representation = load_and_iterate_json(file_path,fields)
+def export_load_vector(file_path):
 
-print(vector_representation)
+    fields = ['first_name','last_name','title','address','phone_number','job_title','company','email','passport_number','suffix']
+    vector_representation = load_and_iterate_json(file_path,fields)
+
+    vector_representation.append([1,0,1,0,1])
+
+    return(flatten_2d_list(vector_representation))
+
+
+def state_change(current_state,index_choices):
+    current_state[-5:] = index_choices[:5]
+    return(current_state)
+
+# print(export_load_vector('tData.json'))
