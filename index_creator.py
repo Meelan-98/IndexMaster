@@ -9,10 +9,13 @@ uri = "mongodb+srv://IMaster:Password@indexmaster.epnwmxt.mongodb.net/?retryWrit
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 db = client['IndexMaster']
-collection = db['PeopleCatalog']
+collection = db['DatasetCatalog']
 
 collection.create_index("name")
 collection.create_index([("job_title", 1), ("company", 1)])
 collection.create_index([("address", "text")])
+collection.create_index([("address", "text")])
+collection.create_index([("address", "text")])
+
 
 client.close()
