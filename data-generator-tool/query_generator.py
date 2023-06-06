@@ -37,6 +37,39 @@ def query_type5(random_document):
     query = {'first_name': query_first_name, 'job_title': query_job_title, 'company': query_company}
     return query
 
+def query_type6(random_document):
+    query_passport = random_document['passport_number']
+    query_phone_number = random_document['phone_number']
+    query = {'passport_number': query_passport, 'phone_number': query_phone_number}
+    return query
+
+def query_type7(random_document):
+    query_email = random_document['email']
+    query_last_name = random_document['last_name']
+    query_phone_number = random_document['phone_number']
+    query = {'email': query_email, 'last_name': query_last_name, 'phone_number': query_phone_number}
+    return query
+
+def query_type8(random_document):
+    query_job_title = random_document['job_title']
+    query_first_name = random_document['first_name']
+    query_last_name = random_document['last_name']
+    query = {'first_name': query_first_name, 'last_name': query_last_name, 'job_title': query_job_title}
+
+def query_type9(random_document):
+    query_address = random_document['address']
+    query_phone_number = random_document['phone_number']
+    query = {'address': query_address, 'phone_number': query_phone_number}
+    return query
+
+def query_type10(random_document):
+    query_last_name = random_document['last_name']
+    query_job_title = random_document['job_title']
+    query_company = random_document['company']
+    query_title = random_document['title']
+    query = {'job_title': query_job_title, 'company': query_company, 'title': query_title, 'last_name': query_last_name}
+    return query
+
 def writeToFile(filename, queries):
     # Save queries to JSON file
     file_path = "workloads/" + filename + ".json"
