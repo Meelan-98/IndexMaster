@@ -1,38 +1,44 @@
 import gym
 from stable_baselines3 import PPO
+from gym import spaces
+import numpy as np
+from load_wise.vectorizer import export_load_vector,state_change
+from load_wise.reward_cal import get_reward
 
-# Define the custom environment
-class CustomEnvironment(gym.Env):
-    def __init__(self):
-        # Define your custom environment implementation
-        pass
-
-    def step(self, action):
-        # Implement the step function that executes an action and returns the next state, reward, done flag, and additional info
-        pass
-
+class MongoDBIndexSelectionEnv(gym.Env):
+    def __init__(self, initial_state_fn, reward_fn, state_change_fn):
+        self.action_space = spaces.Discrete(3) #MultiBinary(3)  # Binary array of size 5
+        self.observation_space = spaces.MultiBinary(51)  # Binary array of size 55
+        
+        self.initial_state_fn = initial_state_fn
+        self.reward_fn = reward_fn
+        self.state_change_fn = state_change_fn
+        
+        self.state = None
+        self.reset()
+        
     def reset(self):
-        # Implement the reset function that resets the environment and returns the initial state
-        pass
+        self.state = self.initial_state_fn('tData.json')
+        return np.array(self.state)
+    
+    def step(self, action):
 
-# Create an instance of your custom environment
-env = CustomEnvironment()
+        reward = self.reward_fn(action)
+        self.state = self.state_change_fn(self.state,action)  # Change the state
 
-# Create the PPO agent
-ppo_agent = PPO("MlpPolicy", env, verbose=1)
+        done = True  # Set to True if the episode is over
+        
+        return np.array(self.state), reward, done, {}
 
-# Train the PPO agent
-ppo_agent.learn(total_timesteps=10000)
 
-# Save the trained agent
-ppo_agent.save("ppo_agent")
+env = MongoDBIndexSelectionEnv(export_load_vector, get_reward, state_change)
 
-# Load the trained agent
-loaded_agent = PPO.load("ppo_agent")
-
+model = PPO("MlpPolicy", env, verbose=1)
+model.learn(total_timesteps=10000)
 obs = env.reset()
+
 done = False
 while not done:
-    action, _ = loaded_agent.predict(obs)
+    action, _ = model.predict(obs)
     obs, reward, done, _ = env.step(action)
-    env.render()
+    print(action,reward)
