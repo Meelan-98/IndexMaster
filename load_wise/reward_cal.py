@@ -19,7 +19,7 @@ collection = db['DatasetCatalog']
 
 def get_reward(index_choice):
 
-    with open('tData.json') as file:
+    with open('workloads/test_workload_1.json') as file:
         queries = json.load(file)
 
     if (index_choice==0):
@@ -40,8 +40,6 @@ def get_reward(index_choice):
     end_time = time.time()
 
     elapsed_time = (end_time - start_time)*1000
-
-    print(elapsed_time)
 
     return(math.exp(-elapsed_time))
     

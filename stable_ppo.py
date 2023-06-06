@@ -18,7 +18,7 @@ class MongoDBIndexSelectionEnv(gym.Env):
         self.reset()
         
     def reset(self):
-        self.state = self.initial_state_fn('tData.json')
+        self.state = self.initial_state_fn('workloads/test_workload_1.json')
         return np.array(self.state)
     
     def step(self, action):
