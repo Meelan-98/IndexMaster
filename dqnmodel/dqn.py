@@ -62,7 +62,7 @@ class Agent:
         q_values = self.model(state_tensor)
         _, action_index = torch.max(q_values, dim=1)
         reward_list=[0,0,0,0,0]
-        with open('training_dataset1.json', 'r') as file:
+        with open('dqnmodel/training_dataset1.json', 'r') as file:
             rewards = json.load(file)
         for reward in rewards:
             if state == reward['state']:
@@ -99,8 +99,8 @@ discount_factor = 0.5
 agent = Agent(state_dim, action_dim, learning_rate, discount_factor)
 
 # Load rewards from file
-rewards = load_rewards_from_file('training_dataset1.json')
-queries_set = load_queries_from_file('train_workload_1.json')
+rewards = load_rewards_from_file('dqnmodel/training_dataset1.json')
+queries_set = load_queries_from_file('dqnmodel/train_workload_1.json')
 
 # Load the trained model
 model = DQN(state_dim, action_dim)
