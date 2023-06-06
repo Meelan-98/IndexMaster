@@ -10,17 +10,17 @@ if __name__ == "__main__":
     model = DQN(state_dim, action_dim)
 
     # Load the model's state dictionary
-    model.load_state_dict(torch.load('dqnmodel/trained_model.pth'))
+    model.load_state_dict(torch.load('trained_model.pth'))
     model.eval()
     state_dim = 5  # Dimension of the state/query
     action_dim = 5  # Number of possible actions
     learning_rate = 0.005
-    discount_factor = 0.95
+    discount_factor = 0.955
 
     # Initialize the agent
     agent = Agent(state_dim, action_dim, learning_rate, discount_factor)
     j = input("Enter Query number : ")
-    with open('dqnmodel/training_dataset1.json', 'r') as file:
+    with open('training_dataset1.json', 'r') as file:
         queries_set = json.load(file)
     query = queries_set[int(j)]
     next_state = queries_set[int(j)+1]
