@@ -73,9 +73,9 @@ class Agent:
         #print(self.index_to_action)
         min_reward = min(reward_list)
         best_action_index = reward_list.index(min_reward)
-        action = self.index_to_action[str(best_action_index)]
+        actionx = self.index_to_action[str(best_action_index)]
         #action = self.index_to_action[str(action_index.item())]  # Convert index to action string
-        return action
+        return actionx
 
 
 # Load rewards from JSON file
