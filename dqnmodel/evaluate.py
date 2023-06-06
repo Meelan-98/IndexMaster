@@ -13,7 +13,7 @@ client = MongoClient(uri, server_api=ServerApi('1'))
 db = client['IndexMaster']
 collection = db['DatasetCatalog']
 
-with open('dqnmodel/train_workload_1.json', 'r') as json_file:
+with open('train_workload_1.json', 'r') as json_file:
     query_attributes_list = json.load(json_file)
 
 training_dataset = []
@@ -68,7 +68,7 @@ for i in range(len(query_attributes_list)):
 
     print(i,"done")
 
-with open('dqnmodel/evaluation.json', 'w') as json_file:
+with open('evaluation.json', 'w') as json_file:
     json.dump(training_dataset, json_file, indent=4)
 
 client.close()
