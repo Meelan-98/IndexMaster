@@ -39,4 +39,15 @@ def state_change(path, tot_queries, rem_queries):
 
     return(existence_map)
 
+def get_action(index_choice):
+    
+    if (index_choice==0):
+        index_name = "passport_number_1"
+    elif (index_choice==1):
+        index_name = "email_1"
+    elif (index_choice==2):
+        index_name = "first_name_1_last_name_1"
+
+    return(index_name)
+
 # print(initial_state_function("workloads/test_workload_2.json"))

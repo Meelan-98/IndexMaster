@@ -3,8 +3,9 @@ from stable_baselines3 import PPO
 from gym import spaces
 import numpy as np
 import csv
-from load_wise.environment import initial_state_function,state_change
+from load_wise.environment import initial_state_function,state_change, get_action
 from load_wise.reward_cal import get_reward
+
 
 
 def export_to_csv(data, filename):
@@ -66,14 +67,14 @@ model.learn(total_timesteps=1000)
 obs = env.reset()
 done = False
 
-results = []
+results = [["Index Used","Execution Time (ms)"]]
 count = 1
 
 while not done:
     result = [count]
     action, _ = model.predict(obs)
     obs, reward, done, metadata = env.step(action)
-    results.append([count,metadata["time"],action])
+    results.append([get_action(action),metadata["time"]])
     count = count + 1
 
 path_to_export = "workloads/results/reinforced_" + workload + ".csv"

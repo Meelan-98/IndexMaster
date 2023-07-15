@@ -1,31 +1,25 @@
 Query,Execution Time (ms),Index Used
-"passport_number, last_name",44
-"passport_number, last_name",22
-"passport_number, last_name",12
-"passport_number, last_name",11
-"passport_number, last_name",10
-"email, phone_number",10
-"email, phone_number",10
-"email, phone_number",10
-"email, phone_number",10
-"email, phone_number",10
-"title, first_name, last_name, suffix",10
-"title, first_name, last_name, suffix",10
-"title, first_name, last_name, suffix",10
-"title, first_name, last_name, suffix",10
-"title, first_name, last_name, suffix",10
-"title, first_name, last_name, suffix",9
-"title, first_name, last_name, suffix",9
-"address, company",10
-"address, company",9
-"address, company",10
-"address, company",10
-"address, company",12
-"address, company",10
-"first_name, job_title, company",10
-"first_name, job_title, company",9
-"first_name, job_title, company",10
-"first_name, job_title, company",9
-"first_name, job_title, company",10
-"first_name, job_title, company",10
-"first_name, job_title, company",10
+"passport_number, last_name",48,passport_number_1
+"passport_number, last_name",20,passport_number_1
+"passport_number, last_name",12,passport_number_1
+"passport_number, last_name",11,passport_number_1
+"passport_number, last_name",10,passport_number_1
+"email, phone_number",10,email_1
+"email, phone_number",9,email_1
+"email, phone_number",10,email_1
+"email, phone_number",10,email_1
+"email, phone_number",10,email_1
+"title, first_name, last_name, suffix",10,first_name_1_last_name_1
+"title, first_name, last_name, suffix",10,first_name_1_last_name_1
+"title, first_name, last_name, suffix",10,first_name_1_last_name_1
+"title, first_name, last_name, suffix",10,first_name_1_last_name_1
+"title, first_name, last_name, suffix",10,first_name_1_last_name_1
+"title, first_name, last_name, suffix",9,first_name_1_last_name_1
+"title, first_name, last_name, suffix",10,first_name_1_last_name_1
+"first_name, job_title, company",10,job_title_1_company_1
+"first_name, job_title, company",9,job_title_1_company_1
+"first_name, job_title, company",9,job_title_1_company_1
+"first_name, job_title, company",10,job_title_1_company_1
+"first_name, job_title, company",10,job_title_1_company_1
+"first_name, job_title, company",10,job_title_1_company_1
+"first_name, job_title, company",10,job_title_1_company_1
