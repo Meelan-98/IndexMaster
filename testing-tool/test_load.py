@@ -13,7 +13,7 @@ collection = db['DatasetCatalog']
 
 def test_workload_base(load_name,export_name):
 
-    test_result = [["Query Id","Execution Time (ms)","Index Used"]]
+    test_result = [["Query","Execution Time (ms)","Index Used"]]
 
     load_path = load_name
 
@@ -23,22 +23,22 @@ def test_workload_base(load_name,export_name):
 
     print("Running : ",len(queries), "Find queries")
     for index in range(0,len(queries)):
+        
         query = queries[index]
 
         try:
-            current_time = time.time()
+            start_time = time.time()
 
             query_result = collection.find(query)
 
-            elapsed_time = time.time() - current_time # stats["executionTimeMillis"]
+            end_time = time.time()
 
-            elapsed_time = round(elapsed_time*1000000)
+            elapsed_time = round((end_time - start_time)*1000000)
 
-            stats = query_result.explain()["executionStats"]
+            # stats = query_result.explain()["executionStats"]
 
             keys_string = ', '.join([key for key in query])
-            test_result.append([keys_string,elapsed_time,stats["executionStages"]["inputStage"]["indexName"]])
-            print(index)
+            test_result.append([keys_string,elapsed_time])#,stats["executionStages"]["inputStage"]["indexName"]])
 
         except Exception as e:
             print(query)
@@ -55,7 +55,7 @@ def export_to_csv(data, filename):
         csv_writer.writerows(data)
 
 
-work_load_path = "workloads/train_workload_1.json"
-test_workload_base(work_load_path,"train_workload_1")
+work_load_path = "workloads/train_workload_0.json"
+test_workload_base(work_load_path,"train_workload_0")
 
 

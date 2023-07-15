@@ -17,10 +17,14 @@ client = MongoClient(uri, server_api=ServerApi('1'))
 db = client['IndexMaster']
 collection = db['DatasetCatalog']
 
-def get_reward(index_choice):
+def get_reward(workload_path, tot_queries, rem_queries, index_choice):
 
-    with open('tData.json') as file:
-        queries = json.load(file)
+    with open(workload_path, 'r') as json_file:
+        data = json.load(json_file)
+
+    query_index = tot_queries-rem_queries
+
+    query = data[query_index]
 
     if (index_choice==0):
         index_name = "passport_number_1"
@@ -34,15 +38,12 @@ def get_reward(index_choice):
     
     start_time = time.time()
 
-    for query in queries:
-        query_result = collection.find(query).hint(index_name)
+    query_result = collection.find(query).hint(index_name)
 
     end_time = time.time()
 
-    elapsed_time = (end_time - start_time)*1000
+    elapsed_time = round((end_time - start_time)*1000000)
 
-    print(elapsed_time)
-
-    return(math.exp(-elapsed_time))
+    return([elapsed_time,math.exp(-elapsed_time)])
     
 
