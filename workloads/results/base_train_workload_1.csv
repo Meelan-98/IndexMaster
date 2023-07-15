@@ -1,0 +1,181 @@
+Query Id,Execution Time (ms),Index Used
+"passport_number, last_name",45,passport_number_1
+"passport_number, last_name",120,passport_number_1
+"passport_number, last_name",103,passport_number_1
+"passport_number, last_name",113,passport_number_1
+"passport_number, last_name",152,passport_number_1
+"passport_number, last_name",107,passport_number_1
+"passport_number, last_name",114,passport_number_1
+"passport_number, last_name",111,passport_number_1
+"passport_number, last_name",92,passport_number_1
+"passport_number, last_name",63,passport_number_1
+"passport_number, last_name",98,passport_number_1
+"passport_number, last_name",106,passport_number_1
+"passport_number, last_name",38,passport_number_1
+"passport_number, last_name",107,passport_number_1
+"passport_number, last_name",102,passport_number_1
+"passport_number, last_name",112,passport_number_1
+"passport_number, last_name",112,passport_number_1
+"passport_number, last_name",85,passport_number_1
+"passport_number, last_name",110,passport_number_1
+"passport_number, last_name",108,passport_number_1
+"passport_number, last_name",115,passport_number_1
+"passport_number, last_name",110,passport_number_1
+"passport_number, last_name",110,passport_number_1
+"passport_number, last_name",110,passport_number_1
+"passport_number, last_name",108,passport_number_1
+"passport_number, last_name",106,passport_number_1
+"passport_number, last_name",100,passport_number_1
+"passport_number, last_name",107,passport_number_1
+"passport_number, last_name",106,passport_number_1
+"passport_number, last_name",111,passport_number_1
+"passport_number, last_name",108,passport_number_1
+"passport_number, last_name",107,passport_number_1
+"passport_number, last_name",111,passport_number_1
+"passport_number, last_name",115,passport_number_1
+"passport_number, last_name",105,passport_number_1
+"passport_number, last_name",121,passport_number_1
+"passport_number, last_name",107,passport_number_1
+"passport_number, last_name",113,passport_number_1
+"passport_number, last_name",105,passport_number_1
+"passport_number, last_name",108,passport_number_1
+"passport_number, last_name",112,passport_number_1
+"passport_number, last_name",116,passport_number_1
+"passport_number, last_name",85,passport_number_1
+"passport_number, last_name",70,passport_number_1
+"passport_number, last_name",117,passport_number_1
+"passport_number, last_name",103,passport_number_1
+"passport_number, last_name",110,passport_number_1
+"passport_number, last_name",100,passport_number_1
+"passport_number, last_name",46,passport_number_1
+"passport_number, last_name",111,passport_number_1
+"email, phone_number",111,email_1
+"email, phone_number",104,email_1
+"email, phone_number",108,email_1
+"email, phone_number",106,email_1
+"email, phone_number",111,email_1
+"email, phone_number",107,email_1
+"email, phone_number",102,email_1
+"email, phone_number",110,email_1
+"email, phone_number",108,email_1
+"email, phone_number",109,email_1
+"email, phone_number",109,email_1
+"email, phone_number",111,email_1
+"email, phone_number",109,email_1
+"email, phone_number",110,email_1
+"email, phone_number",114,email_1
+"email, phone_number",113,email_1
+"email, phone_number",101,email_1
+"email, phone_number",42,email_1
+"email, phone_number",110,email_1
+"email, phone_number",105,email_1
+"email, phone_number",106,email_1
+"email, phone_number",117,email_1
+"email, phone_number",106,email_1
+"email, phone_number",106,email_1
+"email, phone_number",108,email_1
+"email, phone_number",99,email_1
+"email, phone_number",111,email_1
+"email, phone_number",104,email_1
+"email, phone_number",110,email_1
+"email, phone_number",110,email_1
+"email, phone_number",106,email_1
+"email, phone_number",108,email_1
+"email, phone_number",112,email_1
+"email, phone_number",112,email_1
+"email, phone_number",115,email_1
+"email, phone_number",108,email_1
+"email, phone_number",31,email_1
+"email, phone_number",117,email_1
+"email, phone_number",106,email_1
+"email, phone_number",104,email_1
+"title, first_name, last_name, suffix",100,first_name_1_last_name_1
+"title, first_name, last_name, suffix",108,first_name_1_last_name_1
+"title, first_name, last_name, suffix",105,first_name_1_last_name_1
+"title, first_name, last_name, suffix",115,first_name_1_last_name_1
+"title, first_name, last_name, suffix",105,first_name_1_last_name_1
+"title, first_name, last_name, suffix",104,first_name_1_last_name_1
+"title, first_name, last_name, suffix",108,first_name_1_last_name_1
+"title, first_name, last_name, suffix",123,first_name_1_last_name_1
+"title, first_name, last_name, suffix",106,first_name_1_last_name_1
+"title, first_name, last_name, suffix",101,first_name_1_last_name_1
+"title, first_name, last_name, suffix",112,first_name_1_last_name_1
+"title, first_name, last_name, suffix",108,first_name_1_last_name_1
+"title, first_name, last_name, suffix",110,first_name_1_last_name_1
+"title, first_name, last_name, suffix",115,first_name_1_last_name_1
+"title, first_name, last_name, suffix",122,first_name_1_last_name_1
+"title, first_name, last_name, suffix",116,first_name_1_last_name_1
+"title, first_name, last_name, suffix",113,first_name_1_last_name_1
+"title, first_name, last_name, suffix",109,first_name_1_last_name_1
+"title, first_name, last_name, suffix",93,first_name_1_last_name_1
+"title, first_name, last_name, suffix",105,first_name_1_last_name_1
+"title, first_name, last_name, suffix",109,first_name_1_last_name_1
+"title, first_name, last_name, suffix",108,first_name_1_last_name_1
+"title, first_name, last_name, suffix",109,first_name_1_last_name_1
+"title, first_name, last_name, suffix",106,first_name_1_last_name_1
+"title, first_name, last_name, suffix",107,first_name_1_last_name_1
+"title, first_name, last_name, suffix",110,first_name_1_last_name_1
+"title, first_name, last_name, suffix",104,first_name_1_last_name_1
+"title, first_name, last_name, suffix",100,first_name_1_last_name_1
+"title, first_name, last_name, suffix",97,first_name_1_last_name_1
+"title, first_name, last_name, suffix",109,first_name_1_last_name_1
+"title, first_name, last_name, suffix",87,first_name_1_last_name_1
+"title, first_name, last_name, suffix",107,first_name_1_last_name_1
+"title, first_name, last_name, suffix",126,first_name_1_last_name_1
+"title, first_name, last_name, suffix",108,first_name_1_last_name_1
+"title, first_name, last_name, suffix",44,first_name_1_last_name_1
+"title, first_name, last_name, suffix",71,first_name_1_last_name_1
+"title, first_name, last_name, suffix",89,first_name_1_last_name_1
+"title, first_name, last_name, suffix",112,first_name_1_last_name_1
+"title, first_name, last_name, suffix",107,first_name_1_last_name_1
+"title, first_name, last_name, suffix",106,first_name_1_last_name_1
+"title, first_name, last_name, suffix",104,first_name_1_last_name_1
+"title, first_name, last_name, suffix",101,first_name_1_last_name_1
+"title, first_name, last_name, suffix",115,first_name_1_last_name_1
+"title, first_name, last_name, suffix",106,first_name_1_last_name_1
+"title, first_name, last_name, suffix",111,first_name_1_last_name_1
+"title, first_name, last_name, suffix",104,first_name_1_last_name_1
+"title, first_name, last_name, suffix",113,first_name_1_last_name_1
+"title, first_name, last_name, suffix",108,first_name_1_last_name_1
+"title, first_name, last_name, suffix",103,first_name_1_last_name_1
+"title, first_name, last_name, suffix",111,first_name_1_last_name_1
+"title, first_name, last_name, suffix",106,first_name_1_last_name_1
+"title, first_name, last_name, suffix",108,first_name_1_last_name_1
+"title, first_name, last_name, suffix",111,first_name_1_last_name_1
+"title, first_name, last_name, suffix",52,first_name_1_last_name_1
+"title, first_name, last_name, suffix",106,first_name_1_last_name_1
+"title, first_name, last_name, suffix",110,first_name_1_last_name_1
+"title, first_name, last_name, suffix",111,first_name_1_last_name_1
+"title, first_name, last_name, suffix",112,first_name_1_last_name_1
+"title, first_name, last_name, suffix",111,first_name_1_last_name_1
+"title, first_name, last_name, suffix",111,first_name_1_last_name_1
+"title, first_name, last_name, suffix",104,first_name_1_last_name_1
+"title, first_name, last_name, suffix",100,first_name_1_last_name_1
+"title, first_name, last_name, suffix",141,first_name_1_last_name_1
+"title, first_name, last_name, suffix",111,first_name_1_last_name_1
+"title, first_name, last_name, suffix",134,first_name_1_last_name_1
+"title, first_name, last_name, suffix",111,first_name_1_last_name_1
+"title, first_name, last_name, suffix",115,first_name_1_last_name_1
+"title, first_name, last_name, suffix",107,first_name_1_last_name_1
+"title, first_name, last_name, suffix",106,first_name_1_last_name_1
+"title, first_name, last_name, suffix",107,first_name_1_last_name_1
+"first_name, job_title, company",111,job_title_1_company_1
+"first_name, job_title, company",108,job_title_1_company_1
+"first_name, job_title, company",106,job_title_1_company_1
+"first_name, job_title, company",105,job_title_1_company_1
+"first_name, job_title, company",109,job_title_1_company_1
+"first_name, job_title, company",114,job_title_1_company_1
+"first_name, job_title, company",108,job_title_1_company_1
+"first_name, job_title, company",115,job_title_1_company_1
+"first_name, job_title, company",105,job_title_1_company_1
+"first_name, job_title, company",921,job_title_1_company_1
+"first_name, job_title, company",108,job_title_1_company_1
+"first_name, job_title, company",106,job_title_1_company_1
+"first_name, job_title, company",119,job_title_1_company_1
+"first_name, job_title, company",104,job_title_1_company_1
+"first_name, job_title, company",106,job_title_1_company_1
+"first_name, job_title, company",125,job_title_1_company_1
+"first_name, job_title, company",109,job_title_1_company_1
+"first_name, job_title, company",99,job_title_1_company_1
+"first_name, job_title, company",49,job_title_1_company_1
+"first_name, job_title, company",94,job_title_1_company_1
