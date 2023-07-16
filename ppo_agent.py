@@ -6,6 +6,7 @@ import csv
 from load_wise.environment import initial_state_function,state_change, get_action
 from load_wise.reward_cal import get_reward
 import configparser
+import time
 
 
 def export_to_csv(data, filename):
@@ -96,14 +97,29 @@ workload = (workload.split("/")[1]).split(".")[0]
 
 print(workload)
 
+infer_times = []
+
 while not done:
     result = [count]
+
+    start_time = time.time()
     action, _ = model.predict(obs)
+    end_time = time.time()
+
+    duration = (end_time - start_time)*1000000
+    infer_times.append(duration)
+
     obs, reward, done, metadata = env.step(action)
     results.append([get_action(action),metadata["time"]])
     count = count + 1
 
 env.exit_inference()
+
+print(infer_times)
+
+average = sum(infer_times) / len(infer_times)
+maximum = max(infer_times)
+minimum = min(infer_times)
 
 path_to_export = "workloads/results/reinforced_" + workload + ".csv"
 export_to_csv(results,path_to_export)
