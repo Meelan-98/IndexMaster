@@ -32,6 +32,18 @@ def get_reward(workload_path, tot_queries, rem_queries, index_choice):
         index_name = "email_1"
     elif (index_choice==2):
         index_name = "first_name_1_last_name_1"
+    elif (index_choice==3):
+        index_name = "job_title_1_company_1"
+    elif (index_choice==4):
+        index_name = "first_name_1"
+    elif (index_choice==5):
+        index_name = "last_name_1"
+    elif (index_choice==6):
+        index_name = "job_title_1"
+    elif (index_choice==7):
+        index_name = "company_1"
+    elif (index_choice==8):
+        index_name = "title_1"
     else:
         print("came here")
         return(math.exp(-100))

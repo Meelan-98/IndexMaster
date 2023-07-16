@@ -16,7 +16,7 @@ def export_to_csv(data, filename):
 class MongoDBIndexSelectionEnv(gym.Env):
     def __init__(self, initial_state_fn, reward_fn, state_change_fn, config_file):
 
-        self.action_space = spaces.Discrete(3) 
+        self.action_space = spaces.Discrete(9) 
         self.observation_space = spaces.MultiBinary(10)
 
         self.config = configparser.ConfigParser()
