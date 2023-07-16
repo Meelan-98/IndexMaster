@@ -66,7 +66,7 @@ def get_reward(workload_path, tot_queries, rem_queries, index_choice):
 
     if not ((index_cols[0] in query_keys) or (index_cols[1] in query_keys)):
         print("Faulty selection")
-        return([100,-10])
+        return([100,0])
         # return([100,math.exp(-100)])
     else:
         print("good")
