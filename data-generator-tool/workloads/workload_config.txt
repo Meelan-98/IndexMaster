@@ -1,2 +1,5 @@
 
 workload : [2, 2, 2, 2, 2]
+train_workload : [100, 100, 100, 100, 100]
+test_workload_1 : [20, 20, 20, 20, 20]
+test_workload_2 : [20, 20, 20, 20, 20]

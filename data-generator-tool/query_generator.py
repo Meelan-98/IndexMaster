@@ -5,9 +5,9 @@ from random import randint
 import random
 
 def query_type1(random_document):
-    query_passport = random_document['passport_number']
+    query_email = random_document['email']
     query_last_name = random_document['last_name']
-    query = {'passport_number': query_passport, 'last_name': query_last_name}
+    query = {'email': query_email, 'last_name': query_last_name}
     return query
 
 def query_type2(random_document):
@@ -20,14 +20,13 @@ def query_type3(random_document):
     query_title = random_document['title']
     query_first_name = random_document['first_name']
     query_last_name = random_document['last_name']
-    query_suffix = random_document['suffix']
-    query = {'title': query_title, 'first_name': query_first_name, 'last_name': query_last_name, 'suffix' : query_suffix}
+    query = {'title': query_title, 'first_name': query_first_name, 'last_name': query_last_name}
     return query
 
 def query_type4(random_document):
-    query_address = random_document['address']
+    query_email = random_document['email']
     query_company = random_document['company']
-    query = {'address': query_address, 'company': query_company}
+    query = {'email': query_email, 'company': query_company}
     return query
 
 def query_type5(random_document):
@@ -107,6 +106,8 @@ def generate_queries(query_count, r, collection):
         queries.append(query)
         print(i,"done")
     print(queries)
+    random.shuffle(queries)
+    print(queries)
     return queries
 
 def main():
@@ -114,12 +115,12 @@ def main():
     client = MongoClient(uri, server_api=ServerApi('1'))
 
     db = client['IndexMaster']
-    collection = db['DatasetCatalog']
+    collection = db['TestCatalog']
 
     # Update These
-    query_count = 10
-    r = [2 ,2 ,2, 2, 2]
-    filename="workload"
+    query_count = 100
+    r = [20 ,20 ,20, 20, 20]
+    filename="test_workload_2"
 
     queries = generate_queries(query_count, r, collection)
     
