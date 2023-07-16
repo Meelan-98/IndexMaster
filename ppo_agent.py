@@ -80,7 +80,7 @@ env = MongoDBIndexSelectionEnv(initial_state_function, get_reward, state_change,
 
 print("Started Learning........")
 model = PPO("MlpPolicy", env, verbose=2)
-model.learn(total_timesteps=10000)
+model.learn(total_timesteps=50000)
 
 print("Learning done ! Entering prediction mode")
 env.enter_inference()
@@ -94,8 +94,6 @@ config = configparser.ConfigParser()
 config.read("config.ini")
 workload = str(config.get("env", "test_state"))
 workload = (workload.split("/")[1]).split(".")[0]
-
-print(workload)
 
 infer_times = []
 
@@ -114,8 +112,6 @@ while not done:
     count = count + 1
 
 env.exit_inference()
-
-print(infer_times)
 
 average = sum(infer_times) / len(infer_times)
 maximum = max(infer_times)
