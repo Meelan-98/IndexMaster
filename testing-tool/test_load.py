@@ -9,7 +9,7 @@ uri = "mongodb+srv://IMaster:Password@indexmaster.epnwmxt.mongodb.net/?retryWrit
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 db = client['IndexMaster']
-collection = db['DatasetCatalog']
+collection = db['TestCatalog']
 
 def test_query_time(load_name):
 
@@ -76,5 +76,5 @@ def export_to_csv(data, filename):
         csv_writer.writerows(data)
 
 
-work_load_path = "workloads/train_workload_0.json"
-test_index_name(work_load_path,"train_workload_0")
+work_load_path = "workloads/train_workload.json"
+test_index_name(work_load_path,"train_workload")

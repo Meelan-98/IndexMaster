@@ -56,14 +56,16 @@ class MongoDBIndexSelectionEnv(gym.Env):
         
         return np.array(self.state), reward, done, {"time" : rewards[0]}
 
-workload = "train_workload_0"
+workload = "train_workload"
 workload_path = "workloads/" + workload + ".json"
 
 env = MongoDBIndexSelectionEnv(initial_state_function, get_reward, state_change, workload_path)
 
+print("Started Learning........")
 model = PPO("MlpPolicy", env, verbose=2)
-model.learn(total_timesteps=1000)
+model.learn(total_timesteps=10000)
 
+print("Learning done ! Entering prediction mode")
 obs = env.reset()
 done = False
 
