@@ -27,7 +27,7 @@ def get_reward(workload_path, tot_queries, rem_queries, index_choice):
     query = data[query_index]
 
     if (index_choice==0):
-        index_name = "passport_number_1"
+        index_name = "phone_number_1"
     elif (index_choice==1):
         index_name = "email_1"
     elif (index_choice==2):

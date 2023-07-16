@@ -5,7 +5,7 @@ def initial_state_function(workload_path):
     with open(workload_path, 'r') as json_file:
         data = json.load(json_file)
 
-    fields = ['first_name','last_name','title','address','phone_number','job_title','company','email','passport_number','suffix']
+    fields = ['first_name','last_name','title','address','phone_number','job_title','company','email']
 
     state = []
 
@@ -22,7 +22,7 @@ def initial_state_function(workload_path):
 
 def state_change(path, tot_queries, rem_queries):
 
-    fields = ['first_name','last_name','title','address','phone_number','job_title','company','email','passport_number','suffix']
+    fields = ['first_name','last_name','title','address','phone_number','job_title','company','email']
 
     with open(path, 'r') as json_file:
         data = json.load(json_file)
@@ -42,7 +42,7 @@ def state_change(path, tot_queries, rem_queries):
 def get_action(index_choice):
     
     if (index_choice==0):
-        index_name = "passport_number_1"
+        index_name = "phone_number_1"
     elif (index_choice==1):
         index_name = "email_1"
     elif (index_choice==2):

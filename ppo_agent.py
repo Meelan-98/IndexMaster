@@ -18,7 +18,7 @@ class MongoDBIndexSelectionEnv(gym.Env):
     def __init__(self, initial_state_fn, reward_fn, state_change_fn, config_file):
 
         self.action_space = spaces.Discrete(9) 
-        self.observation_space = spaces.MultiBinary(10)
+        self.observation_space = spaces.MultiBinary(8)
 
         self.config = configparser.ConfigParser()
         self.config.read(config_file)

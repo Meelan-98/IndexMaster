@@ -50,7 +50,7 @@ def export_to_csv(data, filename):
         csv_writer = csv.writer(csvfile)
         csv_writer.writerows(data)
 
-w_type = "test_workload_1"
+w_type = "train_workload"
 
 work_load_path = "workloads/" + w_type +".json"
 index_path = "workloads/results/base_" + w_type + ".csv"
