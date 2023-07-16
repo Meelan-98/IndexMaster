@@ -15,8 +15,8 @@ def join_csv_files(file1, file2, output_file):
         writer.writerows(rows)
 
 # Usage example
-file1 = 'workloads/results/base_train_workload.csv'
-file2 = 'workloads/results/reinforced_train_workload.csv'
-output_file = 'workloads/results/combined_train_workload.csv'
+file1 = 'workloads/results/base_test_workload_1.csv'
+file2 = 'workloads/results/reinforced_test_workload_1.csv'
+output_file = 'workloads/results/combined_test_workload_1.csv'
 
 join_csv_files(file1, file2, output_file)

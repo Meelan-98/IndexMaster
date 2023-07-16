@@ -75,9 +75,6 @@ class MongoDBIndexSelectionEnv(gym.Env):
     def exit_inference(self):
         self.inference = False
 
-workload = "train_workload"
-workload_path = "workloads/" + workload + ".json"
-
 env = MongoDBIndexSelectionEnv(initial_state_function, get_reward, state_change, "config.ini")
 
 print("Started Learning........")
@@ -92,12 +89,21 @@ done = False
 results = [["Index Used","Execution Time (ms)"]]
 count = 1
 
+config = configparser.ConfigParser()
+config.read("config.ini")
+workload = str(config.get("env", "test_state"))
+workload = (workload.split("/")[1]).split(".")[0]
+
+print(workload)
+
 while not done:
     result = [count]
     action, _ = model.predict(obs)
     obs, reward, done, metadata = env.step(action)
     results.append([get_action(action),metadata["time"]])
     count = count + 1
+
+env.exit_inference()
 
 path_to_export = "workloads/results/reinforced_" + workload + ".csv"
 export_to_csv(results,path_to_export)
