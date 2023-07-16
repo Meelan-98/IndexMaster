@@ -1,0 +1,101 @@
+Query,Execution Time (ms),Index Used
+"email, last_name",51,email_1
+"email, last_name",20,email_1
+"email, phone_number",13,phone_number_1
+"email, phone_number",10,phone_number_1
+"email, company",10,email_1
+"email, last_name",10,email_1
+"email, last_name",10,email_1
+"email, last_name",10,email_1
+"first_name, job_title, company",10,job_title_1_company_1
+"email, phone_number",10,email_1
+"email, company",10,email_1
+"email, last_name",10,email_1
+"email, phone_number",9,phone_number_1
+"first_name, job_title, company",10,job_title_1_company_1
+"email, phone_number",9,email_1
+"title, first_name, last_name",40,first_name_1_last_name_1
+"email, company",19,email_1
+"title, first_name, last_name",11,first_name_1_last_name_1
+"email, company",11,email_1
+"email, phone_number",10,phone_number_1
+"email, last_name",11,email_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"email, phone_number",10,phone_number_1
+"email, last_name",11,email_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"first_name, job_title, company",10,job_title_1_company_1
+"email, last_name",11,email_1
+"title, first_name, last_name",11,first_name_1_last_name_1
+"email, phone_number",9,phone_number_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"email, phone_number",10,phone_number_1
+"email, phone_number",10,phone_number_1
+"email, company",11,email_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"email, company",10,email_1
+"email, last_name",10,email_1
+"first_name, job_title, company",10,job_title_1_company_1
+"email, company",10,email_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"email, last_name",10,email_1
+"email, phone_number",11,phone_number_1
+"email, company",10,email_1
+"first_name, job_title, company",10,job_title_1_company_1
+"first_name, job_title, company",10,job_title_1_company_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"email, company",10,email_1
+"email, company",10,email_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"email, company",10,email_1
+"email, last_name",10,email_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"first_name, job_title, company",10,job_title_1_company_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"email, phone_number",11,phone_number_1
+"email, phone_number",10,email_1
+"first_name, job_title, company",10,job_title_1_company_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"first_name, job_title, company",11,job_title_1_company_1
+"email, last_name",10,email_1
+"email, phone_number",10,phone_number_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"email, company",11,email_1
+"first_name, job_title, company",10,job_title_1_company_1
+"email, last_name",10,email_1
+"first_name, job_title, company",9,job_title_1_company_1
+"email, company",10,email_1
+"first_name, job_title, company",9,job_title_1_company_1
+"first_name, job_title, company",10,job_title_1_company_1
+"first_name, job_title, company",9,job_title_1_company_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"email, company",9,email_1
+"email, last_name",10,email_1
+"email, phone_number",9,phone_number_1
+"email, phone_number",10,phone_number_1
+"email, phone_number",9,phone_number_1
+"first_name, job_title, company",10,job_title_1_company_1
+"email, company",9,email_1
+"email, company",9,email_1
+"email, last_name",11,email_1
+"email, company",9,email_1
+"first_name, job_title, company",10,job_title_1_company_1
+"email, company",9,email_1
+"email, last_name",10,email_1
+"first_name, job_title, company",10,job_title_1_company_1
+"email, last_name",9,email_1
+"first_name, job_title, company",9,job_title_1_company_1
+"email, company",10,email_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"email, last_name",9,email_1
+"email, last_name",10,email_1
+"title, first_name, last_name",10,first_name_1_last_name_1
+"email, phone_number",10,email_1
+"email, phone_number",10,phone_number_1
+"email, phone_number",15,phone_number_1
+"first_name, job_title, company",11,job_title_1_company_1
+"first_name, job_title, company",9,job_title_1_company_1
+"email, company",10,email_1

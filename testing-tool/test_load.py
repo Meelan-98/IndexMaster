@@ -76,5 +76,5 @@ def export_to_csv(data, filename):
         csv_writer.writerows(data)
 
 
-work_load_path = "workloads/test_workload_1.json"
-test_index_name(work_load_path,"test_workload_1")
+work_load_path = "workloads/train_workload.json"
+test_index_name(work_load_path,"train_workload")
